@@ -79,6 +79,28 @@ class block_multiprogress extends block_base
             "
         );
 
+        $traducao = [
+            'FIC.1195' => [
+                'course_alias' => 'PEDRA DA LÓGICA',
+                'course_subtitle' => 'Viaje ate o Oeste Potiguar para obtê-la',
+                'stone_color' => '62, 193, 52'
+            ],
+            'FIC.1196' => [
+                'course_alias' => 'PEDRA DA COMUNICAÇÃO',
+                'course_subtitle' => 'Viaje ate a Central Potiguar para obtê-la',
+                'stone_color' => '253, 35, 217'
+            ],
+            'FIC.1197' => [
+                'course_alias' => 'PEDRA DA HARMONIA',
+                'course_subtitle' => 'Viaje ate o Agreste Potiguar para obtê-la',
+                'stone_color' => '242, 183, 34'
+            ],
+            'FIC.1198' => [
+                'course_alias' => 'PEDRA DA UNIDADE',
+                'course_subtitle' => 'Viaje ate o Leste Potiguar para obtê-la',
+                'stone_color' => '47, 109, 246'
+            ]
+        ];
 
         foreach ($courses as $course) {
             // Extrai o valor 'FIC.1197' do idnumber usando regex
@@ -86,19 +108,22 @@ class block_multiprogress extends block_base
             if (preg_match('/.*\.(FIC.\\d*)#.*/', $course->course_idnumber, $matches)) {
                 $disciplina = $matches[1];
             }
-            // If the course alias is not set, use the course fullname.
-            if (empty($course->course_alias)) {
-                $course->course_alias = $course->course_fullname;
-            }
-            // If the course subtitle is not set, use an empty string.
-            if (empty($course->course_subtitle)) {
-                $course->course_subtitle = $course->course_shortname;
-            }
-            // If the course image URL is not set, use a default image.
-            if (empty($course->course_image_url)) {
+
+            if (array_key_exists($disciplina, $traducao)) {
+                // Se a disciplina existir no array de tradução, use os valores correspondentes.
+                $course->course_alias = $traducao[$disciplina]['course_alias'];
+                $course->stone_color =  $traducao[$disciplina]['stone_color'];
+                $course->course_subtitle = $traducao[$disciplina]['course_subtitle'];
                 $course->course_image_url = "$CFG->wwwroot/blocks/multiprogress/assets/img/pedra.$disciplina.png";
+            } else {
+                // Caso contrário, defina valores padrão.
+                $course->course_alias = $course->course_fullname;
+                $course->course_subtitle = $course->course_shortname;
+                $course->stone_color = '0, 255, 255';
             }
-        }   
+            $course->isactive = ($course->course_id == $COURSE->id) ? 'd-flex' : 'hidden';
+        }
+
         $data = [
             'courses' => array_values($courses)
         ];

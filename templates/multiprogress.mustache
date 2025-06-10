@@ -1,4 +1,6 @@
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
     .block_multiprogress.block {
         border: none;
     }
@@ -6,14 +8,24 @@
         text-align: center;
         font-family: Arial, sans-serif;
     }
+    .block_multiprogress_container a{
+       text-decoration: none;
+    }
+    .block_multiprogress_container a:hover{
+       font-weight: bold;
+    }
     .block_multiprogress_header {
         display: flex;
         margin: auto;
+        justify-content: center;
     }
     .block_multiprogress_title {
-        font-size: 24px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 26px;
+        font-weight: 400;
         margin-bottom: 20px;
-        max-width: 250px
+        max-width: 350px;
+        text-align: center;
     }
     .block_multiprogress_book {
         margin-bottom: 20px;
@@ -25,15 +37,20 @@
         margin-bottom: 20px;
     }
     .block_multiprogress_stone img {
-        width: 50px;
+        width: 80px;
         margin-right: 10px;
     }
     .block_multiprogress_stone > div {
         width: 100%;
     }
     .block_multiprogress_stone > div > span {
-        text-align: left;
         display: block;
+        color: #1D1D1B;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        text-align: left;
+        text-decoration: none;
+        font-size: 15px;
     }
     .block_multiprogress_stone > div > div {
         display: flex
@@ -53,7 +70,20 @@
     .block_multiprogress_percentage {
         width: 50px;
         text-align: right;
+        font-family: "Montserrat", sans-serif;
+        font-
     }
+    .show_more_link {
+        color: #007bff;
+        text-decoration: none;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+    }
+    .hidden {
+      display: none;
+    }
+
+
 </style>
 
 <div class="block_multiprogress_container">
@@ -64,9 +94,23 @@
         </div>
     </div>
     {{#courses}}
+
     <a href="view.php?id={{course_id}}" data-course_idnumber="{{course_idnumber}}" data-total_modules="{{total_modules}}" data-total_modules="{{completed_modules}}">
-        <div class="block_multiprogress_stone">
-            <img src="{{course_image_url}}">
+        <div class="block_multiprogress_stone {{isactive}}">
+        <style>
+          .glow-{{course_id}}:hover {
+            filter: drop-shadow(0 0 10px rgba({{stone_color}}, 1) );
+            animation: pulse-{{course_id}} 2s infinite ease-in-out;
+          }
+          @keyframes pulse-{{course_id}} {
+            0%, 100% {
+              filter: drop-shadow(0 0 10px rgba({{stone_color}}, .5));
+          }
+          50% {
+            filter: drop-shadow(0 0 20px rgba({{stone_color}}, 1));
+          }
+        </style>
+            <img src="{{course_image_url}}" class="glow-{{course_id}}" alt="{{course_alias}}" />
             <div>
                 <span>
                     {{course_alias}}<br />
@@ -82,4 +126,20 @@
         </div>
     </a>
     {{/courses}}
+    <div class="show_more">
+        <a href="javascript:void(0);" class="show_more_link">Mostrar mais</a>
+    </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.show_more_link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          document.querySelectorAll('.block_multiprogress_stone').forEach(function (el) {
+              el.classList.toggle('hidden');
+          });
+
+          this.textContent = this.textContent === 'Mostrar mais' ? 'Mostrar menos' : 'Mostrar mais';
+        });
+      });
+    });
+</script>
