@@ -34,13 +34,7 @@ Example context (json):
 }
 </style>
 {{# jornada.iniciada }}
-<img src="{{wwwroot}}/mod/mapaproitec/pix/mapa_ativo.jpg" usemap="#image-map"/>
-<map name="image-map">
-    <area alt="Link para a trilha 1" title="Link para a trilha 1" href="{{wwwroot}}/course/view.php?id={{jornada.id}}" coords="250,40,340,150" shape="rect">
-    <area alt="Link para a trilha 2" title="Link para a trilha 2" href="{{wwwroot}}/course/view.php?id={{portugues.id}}" coords="392,351,478,436" shape="rect">
-    <area alt="Link para a trilha 3" title="Link para a trilha 3" href="{{wwwroot}}/course/view.php?id={{matematica.id}}" coords="637,338,732,425" shape="rect">
-    <area alt="Link para a trilha 4" title="Link para a trilha 4" href="{{wwwroot}}/course/view.php?id={{etica.id}}" coords="743,192,838,273" shape="rect">
-</map>
+    {{> mod_mapaproitec/mapa_ativo }}
 {{/ jornada.iniciada }}
 
 {{^ jornada.iniciada }}
