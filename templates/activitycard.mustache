@@ -1,0 +1,48 @@
+{{!
+This file is part of Moodle - http://moodle.org/
+Moodle is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Moodle is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Moodle.  If not, see <http://www.gnu.org/licenses />.
+}}
+{{!
+@template mod_mapaproitec/activitycard
+TODO describe template activitycard
+Example context (json):
+{
+}
+}}
+
+
+<style>
+.activity.modtype_mapaproitec {
+    border: none;
+}
+.activity.modtype_mapaproitec .activity-icon, .activity.modtype_mapaproitec .activity-name-area {
+    display: none !important;
+}
+.activity.modtype_mapaproitec .activity-description {
+    border: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+</style>
+{{# jornada.iniciada }}
+<img src="{{wwwroot}}/mod/mapaproitec/pix/mapa_ativo.jpg" usemap="#image-map"/>
+<map name="image-map">
+    <area alt="Link para a trilha 1" title="Link para a trilha 1" href="{{wwwroot}}/course/view.php?id={{jornada.id}}" coords="250,40,340,150" shape="rect">
+    <area alt="Link para a trilha 2" title="Link para a trilha 2" href="{{wwwroot}}/course/view.php?id={{portugues.id}}" coords="392,351,478,436" shape="rect">
+    <area alt="Link para a trilha 3" title="Link para a trilha 3" href="{{wwwroot}}/course/view.php?id={{matematica.id}}" coords="637,338,732,425" shape="rect">
+    <area alt="Link para a trilha 4" title="Link para a trilha 4" href="{{wwwroot}}/course/view.php?id={{etica.id}}" coords="743,192,838,273" shape="rect">
+</map>
+{{/ jornada.iniciada }}
+
+{{^ jornada.iniciada }}
+<img src="{{wwwroot}}/mod/mapaproitec/pix/mapa_inativo.png" width="100%" />
+{{/ jornada.iniciada }}
