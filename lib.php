@@ -22,6 +22,7 @@
  * @copyright   2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+require_once(__DIR__ . '/../medalhasproitec/lib.php');
 
 /**
  * Return if the plugin supports $feature.
