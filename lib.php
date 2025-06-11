@@ -304,28 +304,7 @@ function mapaproitec_extend_settings_navigation($settingsnav, $mapaproitecnode =
 function mapaproitec_cm_info_view(cm_info $cm) {
     global $PAGE, $OUTPUT, $COURSE;
     
-    $data = [
-        'jornada' => [
-            "id" => 0,
-            "iniciada" => true,
-            "concluida" => false,
-        ],
-        'portugues' => [
-            "id" => 0,
-            "iniciada" => false,
-            "concluida" => false,
-        ],
-        'matematica' => [
-            "id" => 0,
-            "iniciada" => false,
-            "concluida" => false,
-        ],
-        'etica' => [
-            "id" => 0,
-            "iniciada" => false,
-            "concluida" => false,
-        ]
-    ];
+    $data = get_courses_progress_as_dict();
     $content = $OUTPUT->render_from_template('mod_mapaproitec/activitycard', $data);
     $cm->set_content($content);
 }
