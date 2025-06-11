@@ -14,32 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-$matrix_curricular = [
-    "FIC.1198" => [
-        "curso" => "Seminário de Integração",
-        "alias" => "....",
-        "subtitulo" => "....",
-        "jornada" => true,
-    ], 
-    "FIC.1197" => [
-        "curso" => "Ética e Cidadania",
-        "alias" => "....",
-        "subtitulo" => "....",
-        "jornada" => false,
-    ], 
-    "FIC.1196" => [
-        "curso" => "Matemática",
-        "alias" => "....",
-        "subtitulo" => "....",
-        "jornada" => false,
-    ], 
-    "FIC.1195" => [
-        "curso" => "Língua Portuguesa",
-        "alias" => "....",
-        "subtitulo" => "....",
-        "jornada" => false,
-    ], 
-];
 
 /**
  * Library of interface functions and constants.
