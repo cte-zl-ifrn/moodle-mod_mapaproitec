@@ -102,7 +102,8 @@ class block_multiprogress extends block_base
             ]
         ];
 
-        foreach ($courses as $course) {
+        foreach ($courses as $key => $course) {
+
             // Extrai o valor 'FIC.1197' do idnumber usando regex
             $disciplina = null;
             if (preg_match('/.*\.(FIC.\\d*)#.*/', $course->course_idnumber, $matches)) {
