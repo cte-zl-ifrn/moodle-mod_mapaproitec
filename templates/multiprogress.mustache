@@ -86,7 +86,7 @@
 </style>
 
 <div class="block_multiprogress_container">
-    <div class="block_multiprogress_header">
+    <div class="block_multiprogress_header hidden">
         <div class="block_multiprogress_title">Conquiste todas as pedras para abrir o livro mágico.</div>
         <div class="block_multiprogress_book">
             <img src="{{config.wwwroot}}/blocks/multiprogress/assets/img/livro.png" alt="Livro mágico">
@@ -134,6 +134,9 @@
       document.querySelectorAll('.show_more_link').forEach(function (link) {
         link.addEventListener('click', function () {
           document.querySelectorAll('.block_multiprogress_stone').forEach(function (el) {
+              el.classList.toggle('hidden');
+          });
+          document.querySelectorAll('.block_multiprogress_header').forEach(function (el) {
               el.classList.toggle('hidden');
           });
 
