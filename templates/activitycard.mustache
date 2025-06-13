@@ -13,10 +13,8 @@ along with Moodle.  If not, see <http://www.gnu.org/licenses />.
 }}
 {{!
 @template mod_mapaproitec/activitycard
-TODO describe template activitycard
-Example context (json):
-{
-}
+
+
 }}
 
 
@@ -34,7 +32,7 @@ Example context (json):
 }
 </style>
 {{# jornada.iniciada }}
-    {{> mod_mapaproitec/mapa_ativo }}
+    {{{ svg_map }}}
 {{/ jornada.iniciada }}
 
 {{^ jornada.iniciada }}

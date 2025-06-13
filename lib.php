@@ -30,7 +30,8 @@ require_once(__DIR__ . '/../medalhasproitec/lib.php');
  * @param string $feature Constant representing the feature.
  * @return true | null True if the feature is supported, null otherwise.
  */
-function mapaproitec_supports($feature) {
+function mapaproitec_supports($feature)
+{
     return match ($feature) {
         FEATURE_MOD_ARCHETYPE => MOD_ARCHETYPE_RESOURCE,
         FEATURE_GROUPS => false,
@@ -60,7 +61,8 @@ function mapaproitec_supports($feature) {
  * @param mod_mapaproitec_mod_form $mform The form.
  * @return int The id of the newly inserted record.
  */
-function mapaproitec_add_instance($moduleinstance, $mform = null) {
+function mapaproitec_add_instance($moduleinstance, $mform = null)
+{
     global $DB;
 
     $moduleinstance->timecreated = time();
@@ -80,7 +82,8 @@ function mapaproitec_add_instance($moduleinstance, $mform = null) {
  * @param mod_mapaproitec_mod_form $mform The form.
  * @return bool True if successful, false otherwise.
  */
-function mapaproitec_update_instance($moduleinstance, $mform = null) {
+function mapaproitec_update_instance($moduleinstance, $mform = null)
+{
     global $DB;
 
     $moduleinstance->timemodified = time();
@@ -95,7 +98,8 @@ function mapaproitec_update_instance($moduleinstance, $mform = null) {
  * @param int $id Id of the module instance.
  * @return bool True if successful, false on failure.
  */
-function mapaproitec_delete_instance($id) {
+function mapaproitec_delete_instance($id)
+{
     global $DB;
 
     $exists = $DB->get_record('mapaproitec', ['id' => $id]);
@@ -118,7 +122,8 @@ function mapaproitec_delete_instance($id) {
  * @param int $scaleid ID of the scale.
  * @return bool True if the scale is used by the given mod_mapaproitec instance.
  */
-function mapaproitec_scale_used($moduleinstanceid, $scaleid) {
+function mapaproitec_scale_used($moduleinstanceid, $scaleid)
+{
     global $DB;
 
     if ($scaleid && $DB->record_exists('mapaproitec', ['id' => $moduleinstanceid, 'grade' => -$scaleid])) {
@@ -136,7 +141,8 @@ function mapaproitec_scale_used($moduleinstanceid, $scaleid) {
  * @param int $scaleid ID of the scale.
  * @return bool True if the scale is used by any mod_mapaproitec instance.
  */
-function mapaproitec_scale_used_anywhere($scaleid) {
+function mapaproitec_scale_used_anywhere($scaleid)
+{
     global $DB;
 
     if ($scaleid && $DB->record_exists('mapaproitec', ['grade' => -$scaleid])) {
@@ -155,9 +161,10 @@ function mapaproitec_scale_used_anywhere($scaleid) {
  * @param bool $reset Reset grades in the gradebook.
  * @return void.
  */
-function mapaproitec_grade_item_update($moduleinstance, $reset=false) {
+function mapaproitec_grade_item_update($moduleinstance, $reset = false)
+{
     global $CFG;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
     $item = [];
     $item['itemname'] = clean_param($moduleinstance->name, PARAM_NOTAGS);
@@ -186,12 +193,21 @@ function mapaproitec_grade_item_update($moduleinstance, $reset=false) {
  * @param stdClass $moduleinstance Instance object.
  * @return grade_item.
  */
-function mapaproitec_grade_item_delete($moduleinstance) {
+function mapaproitec_grade_item_delete($moduleinstance)
+{
     global $CFG;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
-    return grade_update('/mod/mapaproitec', $moduleinstance->course, 'mod', 'mapaproitec',
-                        $moduleinstance->id, 0, null, ['deleted' => 1]);
+    return grade_update(
+        '/mod/mapaproitec',
+        $moduleinstance->course,
+        'mod',
+        'mapaproitec',
+        $moduleinstance->id,
+        0,
+        null,
+        ['deleted' => 1]
+    );
 }
 
 /**
@@ -202,9 +218,10 @@ function mapaproitec_grade_item_delete($moduleinstance) {
  * @param stdClass $moduleinstance Instance object with extra cmidnumber and modname property.
  * @param int $userid Update grade of specific user only, 0 means all participants.
  */
-function mapaproitec_update_grades($moduleinstance, $userid = 0) {
+function mapaproitec_update_grades($moduleinstance, $userid = 0)
+{
     global $CFG, $DB;
-    require_once($CFG->libdir.'/gradelib.php');
+    require_once($CFG->libdir . '/gradelib.php');
 
     // Populate array of grade objects indexed by userid.
     $grades = [];
@@ -225,7 +242,8 @@ function mapaproitec_update_grades($moduleinstance, $userid = 0) {
  * @param stdClass $context
  * @return string[].
  */
-function mapaproitec_get_file_areas($course, $cm, $context) {
+function mapaproitec_get_file_areas($course, $cm, $context)
+{
     return [];
 }
 
@@ -246,7 +264,8 @@ function mapaproitec_get_file_areas($course, $cm, $context) {
  * @param string $filename
  * @return file_info Instance or null if not found.
  */
-function mapaproitec_get_file_info($browser, $areas, $course, $cm, $context, $filearea, $itemid, $filepath, $filename) {
+function mapaproitec_get_file_info($browser, $areas, $course, $cm, $context, $filearea, $itemid, $filepath, $filename)
+{
     return null;
 }
 
@@ -264,7 +283,8 @@ function mapaproitec_get_file_info($browser, $areas, $course, $cm, $context, $fi
  * @param bool $forcedownload Whether or not force download.
  * @param array $options Additional options affecting the file serving.
  */
-function mapaproitec_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, $options = []) {
+function mapaproitec_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, $options = [])
+{
     global $DB, $CFG;
 
     if ($context->contextlevel != CONTEXT_MODULE) {
@@ -285,8 +305,7 @@ function mapaproitec_pluginfile($course, $cm, $context, $filearea, $args, $force
  * @param stdClass $module
  * @param cm_info $cm
  */
-function mapaproitec_extend_navigation($mapaproitecnode, $course, $module, $cm) {
-}
+function mapaproitec_extend_navigation($mapaproitecnode, $course, $module, $cm) {}
 
 /**
  * Extends the settings navigation with the mod_mapaproitec settings.
@@ -297,15 +316,20 @@ function mapaproitec_extend_navigation($mapaproitecnode, $course, $module, $cm) 
  * @param settings_navigation $settingsnav {@see settings_navigation}
  * @param navigation_node $mapaproitecnode {@see navigation_node}
  */
-function mapaproitec_extend_settings_navigation($settingsnav, $mapaproitecnode = null) {
-}
+function mapaproitec_extend_settings_navigation($settingsnav, $mapaproitecnode = null) {}
 
 
 
-function mapaproitec_cm_info_view(cm_info $cm) {
-    global $PAGE, $OUTPUT, $COURSE;
-    
+function mapaproitec_cm_info_view(cm_info $cm)
+{
+    global $OUTPUT;
+
     $data = get_courses_progress_as_dict();
+
+    $svg_map = file_get_contents(__DIR__ . '/pix/mapa_ativo.svg');
+    $svg_map = $OUTPUT->render_from_template('mod_mapaproitec/mapa_ativo', $data);
+    $data["svg_map"] = $svg_map;
     $content = $OUTPUT->render_from_template('mod_mapaproitec/activitycard', $data);
-    $cm->set_content($content);
+    $cm->set_custom_cmlist_item(true);
+    $cm->set_content($content, true);
 }
