@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_mapaproitec';
-$plugin->release = '0.1.5';
-$plugin->version = 2025_06_10_05;
+$plugin->release = '0.1.6';
+$plugin->version = 2025_06_10_06;
 $plugin->requires = 2022_11_28_00;
 $plugin->maturity = MATURITY_RC;
 $plugin->dependencies = [
