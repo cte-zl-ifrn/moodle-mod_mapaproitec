@@ -40,7 +40,7 @@ class restore_mapaproitec_activity_structure_step extends restore_activity_struc
         $paths = [];
         $userinfo = $this->get_setting_value('userinfo');
 
-        $paths[] = new restore_path_element('elt', '/path/to/file');
+        $paths[] = new restore_path_element('mapaproitec', '/activity/mapaproitec');
 
         return $this->prepare_activity_structure($paths);
     }
@@ -50,14 +50,24 @@ class restore_mapaproitec_activity_structure_step extends restore_activity_struc
      *
      * @param array $data Parsed element data.
      */
-    protected function process_elt($data) {
-        return;
+    protected function process_mapaproitec($data) {
+        global $DB;
+
+        $data = (object)$data;
+        $data->course = $this->get_courseid();
+
+        // Insere no banco de dados e armazena o novo ID.
+        $newitemid = $DB->insert_record('mapaproitec', $data);
+
+        // Associa o novo ID à atividade restaurada.
+        $this->apply_activity_instance($newitemid);
     }
+
 
     /**
      * Defines post-execution actions.
      */
     protected function after_execute() {
-        return;
+        $this->add_related_files('mod_mapaproitec', 'intro', null);
     }
 }
