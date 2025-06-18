@@ -28,8 +28,8 @@ defined('MOODLE_INTERNAL') || die();
 // More information about the backup process: {@link https://docs.moodle.org/dev/Backup_API}.
 // More information about the restore process: {@link https://docs.moodle.org/dev/Restore_API}.
 
-require_once($CFG->dirroot.'//mod/mapaproitec/backup/moodle2/backup_mapaproitec_stepslib.php');
-require_once($CFG->dirroot.'//mod/mapaproitec/backup/moodle2/backup_mapaproitec_settingslib.php');
+require_once($CFG->dirroot.'/mod/mapaproitec/backup/moodle2/backup_mapaproitec_stepslib.php');
+require_once($CFG->dirroot.'/mod/mapaproitec/backup/moodle2/backup_mapaproitec_settingslib.php');
 
 /**
  * Provides all the settings and steps to perform a complete backup of mod_mapaproitec.

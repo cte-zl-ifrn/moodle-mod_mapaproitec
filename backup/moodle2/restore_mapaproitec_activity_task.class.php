@@ -59,7 +59,12 @@ class restore_mapaproitec_activity_task extends restore_activity_task {
     public static function define_decode_contents() {
         $contents = [];
 
-        // Define the contents.
+        $contents[] = new restore_decode_content(
+            'mapaproitec',              // Nome da tabela.
+            ['intro'],                      // Campos com conteúdo a ser decodificado.
+            'mapaproitec'               // Tipo da atividade.
+        );
+
 
         return $contents;
     }
@@ -72,7 +77,18 @@ class restore_mapaproitec_activity_task extends restore_activity_task {
     public static function define_decode_rules() {
         $rules = [];
 
-        // Define the rules.
+        $rules[] = new restore_decode_rule(
+            'mapaproitecVIEWBYID',
+            '/mod/mapaproitec/view.php?id=$1',
+            'course_module'
+        );
+
+        $rules[] = new restore_decode_rule(
+            'mapaproitecINDEX',
+            '/mod/mapaproitec/index.php?id=$1',
+            'course'
+        );
+
 
         return $rules;
     }
