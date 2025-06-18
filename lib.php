@@ -326,7 +326,6 @@ function mapaproitec_cm_info_view(cm_info $cm)
 
     $data = get_courses_progress_as_dict();
 
-    $svg_map = file_get_contents(__DIR__ . '/pix/mapa_ativo.svg');
     $svg_map = $OUTPUT->render_from_template('mod_mapaproitec/mapa_ativo', $data);
     $data["svg_map"] = $svg_map;
     $content = $OUTPUT->render_from_template('mod_mapaproitec/activitycard', $data);
