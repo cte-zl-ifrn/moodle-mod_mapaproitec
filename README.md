@@ -42,17 +42,3 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with
 this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
-## Estrutura das categorias e cursos
-
-- diarios - Diários
-  - ZL - Campus
-    - 527 - Curso
-        - 527.2024.2 - Período da oferta
-          - 20242.1.527.1E - Turma
-            - **20242.1.527.1E**.`FIC.1198`#*654325* - Seminário de Integração
-            - **20242.1.527.1E**.`FIC.1197`#*654321* - Ética e Cidadania
-            - **20242.1.527.1E**.`FIC.1196`#*654323* - Matemática
-            - **20242.1.527.1E**.`FIC.1195`#*564322* - Língua Portuguesa
-
