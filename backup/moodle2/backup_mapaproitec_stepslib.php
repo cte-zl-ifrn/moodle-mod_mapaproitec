@@ -55,7 +55,7 @@ class backup_mapaproitec_activity_structure_step extends backup_activity_structu
 
         $root->set_source_table('mapaproitec', ['id' => backup::VAR_ACTIVITYID]);
 
-        $root->annotate_files('mod_mapaproitec', 'intro', null);
+        $root->annotate_files('mapaproitec', 'intro', null);
 
 
         // Build the tree with these elements with $root as the root of the backup tree.

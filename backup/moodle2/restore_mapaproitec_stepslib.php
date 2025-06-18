@@ -68,6 +68,6 @@ class restore_mapaproitec_activity_structure_step extends restore_activity_struc
      * Defines post-execution actions.
      */
     protected function after_execute() {
-        $this->add_related_files('mod_mapaproitec', 'intro', null);
+        $this->add_related_files('mapaproitec', 'intro', null);
     }
 }
