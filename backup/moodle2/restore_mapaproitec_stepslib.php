@@ -29,20 +29,21 @@
 /**
  * Defines the structure step to restore one mod_mapaproitec activity.
  */
-class restore_mapaproitec_activity_structure_step extends restore_activity_structure_step {
+class restore_mapaproitec_activity_structure_step extends restore_activity_structure_step
+{
 
     /**
      * Defines the structure to be restored.
      *
      * @return restore_path_element[].
      */
-    protected function define_structure() {
-        $paths = [];
-        $userinfo = $this->get_setting_value('userinfo');
-
-        $paths[] = new restore_path_element('mapaproitec', '/activity/mapaproitec');
-
-        return $this->prepare_activity_structure($paths);
+    protected function define_structure()
+    {
+        return $this->prepare_activity_structure(
+            [
+                new restore_path_element('mapaproitec', '/activity/mapaproitec')
+            ]
+        );
     }
 
     /**
@@ -50,7 +51,8 @@ class restore_mapaproitec_activity_structure_step extends restore_activity_struc
      *
      * @param array $data Parsed element data.
      */
-    protected function process_mapaproitec($data) {
+    protected function process_mapaproitec($data)
+    {
         global $DB;
 
         $data = (object)$data;
@@ -67,7 +69,8 @@ class restore_mapaproitec_activity_structure_step extends restore_activity_struc
     /**
      * Defines post-execution actions.
      */
-    protected function after_execute() {
-        $this->add_related_files('mapaproitec', 'intro', null);
+    protected function after_execute()
+    {
+        $this->add_related_files('mod_mapaproitec', 'intro', null);
     }
 }
