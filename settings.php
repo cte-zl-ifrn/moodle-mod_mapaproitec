@@ -26,10 +26,10 @@
 defined('MOODLE_INTERNAL') || die();
 
 if ($hassiteconfig) {
-    $settings = new admin_settingpage('mod_mapaproitec_settings', new lang_string('pluginname', 'mod_mapaproitec'));
 
     // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedIf
     if ($ADMIN->fulltree) {
+        // $settings = new admin_settingpage('mod_mapaproitec_settings', new lang_string('pluginname', 'mod_mapaproitec'));
         // TO-DO: Define actual plugin settings page and add it to the tree - {@link https://docs.moodle.org/dev/Admin_settings}.
     }
 }
