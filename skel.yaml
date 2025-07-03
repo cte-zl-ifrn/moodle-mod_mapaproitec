@@ -22,14 +22,14 @@ name: Mapa Proitec
 release: "0.1.0"
 
 ## Plugin version number, e.g. 2016062100. Will be set to current date if left empty.
-version: 2025_06_05_04
+version: 2025060504
 
 ## Required Moodle version, e.g. 2015051100 or "2.9".
 requires: "4.1"
 
 ## Plugin maturity level. Possible options are MATURIY_ALPHA, MATURITY_BETA,
 ## MATURITY_RC or MATURIY_STABLE.
-maturity: MATURITY_RC
+maturity: MATURITY_STABLE
 
 ## Copyright holder(s) of the generated files and classes.
 copyright: 2025 DEAD/ZL/IFRN <dead.zl@ifrn.edu.br>, Kelson da Costa Medeiros <kelsoncm@gmail.com>
@@ -258,7 +258,7 @@ mod_features:
 ## If the plugin depends on other plugins, declare the dependencies.
 dependencies:
   - plugin: local_suap
-    version: 2025_06_05_066
+    version: 20250605066
 
 ## Capabilities defined by the plugin.
 capabilities:

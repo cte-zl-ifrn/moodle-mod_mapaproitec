@@ -25,10 +25,10 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_mapaproitec';
-$plugin->release = '0.1.9';
-$plugin->version = 2025062109;
+$plugin->release = '0.1.10';
+$plugin->version = 2025070310;
 $plugin->requires = 2022112800;
-$plugin->maturity = MATURITY_RC;
+$plugin->maturity = MATURITY_STABLE;
 $plugin->dependencies = [
     'local_suap' => 20250605066,
 ];
