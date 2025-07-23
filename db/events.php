@@ -30,7 +30,7 @@ $observers = [
     [
         'eventname' => '\core\event\course_module_completion_updated',
         'callback' => '\mod_mapaproitec\observers\observers::course_module_completion_updated',
-        'includefile' => '/mod/mapaproitec/observers/',
+        'includefile' => '/mod/mapaproitec/classes/observers.php',
         'priority' => 200,
         'internal' => true,
     ],
